@@ -8,6 +8,7 @@
 	<h1>Dog clothing list</h1>
 	
 		<table>
+<<<<<<< HEAD
 	<tr>
 		<th>ID</th>
 		<th>Name</th>
@@ -26,6 +27,24 @@
 		<td><a th:href="@{/edit/{id}(id=${clothing.id})}">Edit</a></td>
 	</tr>
 	</table>
+=======
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Type</th>
+				<th>Price</th>
+				<th>Producer</th>
+			</tr>
+			
+			<tr th:each="clothing : ${clothes}">
+				<td th:text="${clothing.id}"></td>
+				<td th:text="${clothing.name}"></td>
+				<td th:text="${clothing.type}"></td>
+				<td th:text="${clothing.price}"></td>
+				<td th:text="${clothing.producer}"></td>
+			</tr>
+		</table>
+>>>>>>> 322fa9dbe14bceb401bcb397a3676e45090a7af7
 	<p><a href="/add">Add</a></p>
 
 </body>
