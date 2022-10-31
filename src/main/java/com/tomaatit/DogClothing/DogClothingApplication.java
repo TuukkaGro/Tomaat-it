@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 import com.tomaatit.DogClothing.domain.Clothing;
 import com.tomaatit.DogClothing.domain.ClothingRepository;
@@ -22,6 +23,7 @@ public class DogClothingApplication {
 		
 	}
 	
+	@Bean
 	public CommandLineRunner clothingDemo(ClothingRepository repository) {
 		return (args) -> {
 			log.info("save some clothing");
