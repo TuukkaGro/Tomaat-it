@@ -16,9 +16,7 @@ public class Clothing {
 	private String type;
 	private double price;
 	private String producer;
-<<<<<<< HEAD
-=======
-	
+
 	public Clothing(Long id, String name, String type, double price, String producer) {
 		super();
 		this.id = id;
@@ -35,7 +33,6 @@ public class Clothing {
 		this.price = price;
 		this.producer = producer;
 	}
->>>>>>> dcd3f704513323f7d19e33f4fa36418c48f220cc
 
 	public Long getId() {
 		return id;
@@ -53,8 +50,6 @@ public class Clothing {
 		this.name = name;
 	}
 
-<<<<<<< HEAD
-=======
 	public String getType() {
 		return type;
 	}
@@ -63,7 +58,6 @@ public class Clothing {
 		this.type = type;
 	}
 
->>>>>>> dcd3f704513323f7d19e33f4fa36418c48f220cc
 	public double getPrice() {
 		return price;
 	}
@@ -79,19 +73,11 @@ public class Clothing {
 	public void setProducer(String producer) {
 		this.producer = producer;
 	}
-<<<<<<< HEAD
-=======
 
 	@Override
 	public String toString() {
 		return "Clothing [id=" + id + ", name=" + name + ", type=" + type + ", price=" + price + ", producer="
 				+ producer + "]";
 	}
-	
-	
-	
-	
-	
->>>>>>> dcd3f704513323f7d19e33f4fa36418c48f220cc
 
 }
