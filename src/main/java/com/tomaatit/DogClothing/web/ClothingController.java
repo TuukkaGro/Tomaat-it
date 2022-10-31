@@ -43,6 +43,12 @@ public class ClothingController {
 		repository.deleteById(id);
 		return "redirect:../clothinglist";
 	}
+	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+	public String editClothing(@PathVariable("id") Long clothingId, Model model) {
+		model.addAttribute("clothing", repository.findById(clothingId));
+		return "editclothing";
+	}
+	
 	
 
 }
