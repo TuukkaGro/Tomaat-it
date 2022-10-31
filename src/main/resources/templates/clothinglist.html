@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Dog clothing list</h1>
+	
+		<table class="table table-striped">
+	<tr>
+		<th>ID</th>
+		<th>Name</th>
+		<th>Price</th>
+		<th>Producer</th>
+	</tr>
+	
+	<tr th:each="clothing : ${clothes}">
+		<td th:text="${clothing.id}"></td>
+		<td th:text="${clothing.name}"></td>
+		<td th:text="${clothing.price}"></td>
+		<td th:text="${clothing.producer}"></td>
+	</tr>
+	</table>	
+	
+
+</body>
+</html>
