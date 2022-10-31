@@ -34,6 +34,10 @@ public class Clothing {
 		this.producer = producer;
 	}
 
+	public Clothing() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public Long getId() {
 		return id;
 	}
