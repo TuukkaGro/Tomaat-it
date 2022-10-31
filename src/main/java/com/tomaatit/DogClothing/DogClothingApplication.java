@@ -27,7 +27,7 @@ public class DogClothingApplication {
 			log.info("save some clothing");
 			//mock up clothes
 			repository.save(new Clothing("JoustavaMeno", "Haalari", 59.00, "M&M"));
-			repository.save(new Clothing("JoustavaMeno", "Haalari", 59.00, "M&M"));
+			repository.save(new Clothing("70-luku", "Haalari", 32.00, "Leikki"));
 			
 			log.info("fetch all clothing");
 			for (Clothing clothing : repository.findAll()) {
