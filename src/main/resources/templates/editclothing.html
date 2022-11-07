@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Dog Clothing</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Edit clothing</h1>
+	<div>
+		<form th:object="${clothing}" th:action="@{../save}" action="#" method="post">
+			<input type="hidden" th:field="*{id}" class="form-control"/>
+		
+			<label for="name">Name</label>
+			<input type="text" id="name" th:field="*{name}" /><br>
+			
+			<label for="type">Type</label>
+			<input type="text" id="type" th:field="*{type}" /><br>
+			
+			<label for="price">Price</label>
+			<input type="text" id="price" th:field="*{price}" /><br>
+			
+			<label for="producer">Producer</label>
+			<input type="text" id="producer" th:field="*{producer}" /><br>
+			
+			<input type="submit" value="Save"></input>
+		</form>
+	</div>
+</body>
+</html>
