@@ -33,6 +33,12 @@ public class ClothingController {
 		return "clothinglist";
 	}
 	
+	@RequestMapping(value= {"/producerlist"})
+	public String producerList(Model model) {
+		model.addAttribute("producer", prepository.findAll());
+		return "producerlist";
+	}
+	
 	@RequestMapping(value = "/add")
 	public String addClothing(Model model){
 		model.addAttribute("clothing", new Clothing());
