@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.tomaatit.DogClothing.domain.Clothing;
 import com.tomaatit.DogClothing.domain.ClothingRepository;
+import com.tomaatit.DogClothing.domain.Producer;
 import com.tomaatit.DogClothing.domain.ProducerRepository;
 
 @Controller
@@ -46,6 +47,12 @@ public class ClothingController {
 		return "addclothing";
 	}
 	
+	@RequestMapping(value = "/addproducer")
+	public String addProducer(Model model){
+		model.addAttribute("producer", new Producer());
+		return "addproducer";
+	}
+	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String save(Clothing clothing){
 		repository.save(clothing);
@@ -56,6 +63,12 @@ public class ClothingController {
 	public String deleteClothing(@PathVariable("id") Long id, Model model){
 		repository.deleteById(id);
 		return "redirect:../clothinglist";
+	}
+	
+	@RequestMapping(value = "/delete/producer/{id}", method = RequestMethod.GET)
+	public String deleteProducer(@PathVariable("id") Long id, Model model){
+		prepository.deleteById(id);
+		return "redirect:../producerlist";
 	}
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	public String editClothing(@PathVariable("id") Long clothingId, Model model) {
