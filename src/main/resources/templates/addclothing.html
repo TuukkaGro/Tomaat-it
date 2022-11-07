@@ -18,7 +18,9 @@
 			<input type="text" id="price" th:field="*{price}" /><br>
 			
 			<label for="producer">Producer</label>
-			<input type="text" id="producer" th:field="*{producer}" /><br>
+			<select id="producerlist" th:field="*{producer}" class="form-control">
+       			<option th:each="producer: ${producer}" th:value="${producer.producerid}" th:text="${producer.name}"></option>
+    		</select><br>
 			
 			<input type="submit" value="Save"></input>
 		</form>
