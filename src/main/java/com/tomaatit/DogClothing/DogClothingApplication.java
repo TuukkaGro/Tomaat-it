@@ -9,6 +9,8 @@ import org.springframework.context.annotation.Bean;
 
 import com.tomaatit.DogClothing.domain.Clothing;
 import com.tomaatit.DogClothing.domain.ClothingRepository;
+import com.tomaatit.DogClothing.domain.Producer;
+import com.tomaatit.DogClothing.domain.ProducerRepository;
 
 
 
@@ -24,12 +26,17 @@ public class DogClothingApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner clothingDemo(ClothingRepository repository) {
+	public CommandLineRunner clothingDemo(ClothingRepository repository, ProducerRepository prepository) {
 		return (args) -> {
 			log.info("save some clothing");
+			
+			
+			prepository.save(new Producer("M&M"));
+			prepository.save(new Producer("Leikki"));
+			
 			//mock up clothes
-			repository.save(new Clothing("JoustavaMeno", "Haalari", 59.00, "M&M"));
-			repository.save(new Clothing("70-luku", "Haalari", 32.00, "Leikki"));
+			repository.save(new Clothing("JoustavaMeno", "Haalari", 59.00, prepository.findByName("M&M").get(0)));
+			repository.save(new Clothing("70-luku", "Haalari", 32.00, prepository.findByName("Leikki").get(0)));
 			
 			log.info("fetch all clothing");
 			for (Clothing clothing : repository.findAll()) {

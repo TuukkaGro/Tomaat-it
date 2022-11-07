@@ -22,7 +22,7 @@
 		<td th:text="${clothing.name}"></td>
 		<td th:text="${clothing.type}"></td>
 		<td th:text="${clothing.price}"></td>
-		<td th:text="${clothing.producer}"></td>
+		<td th:text="${clothing.producer.name}"></td>
 		<td><a th:href="@{/delete/{id}(id=${clothing.id})}">Delete</a></td>
 		<td><a th:href="@{/edit/{id}(id=${clothing.id})}">Edit</a></td>
 	</tr>
