@@ -22,15 +22,15 @@ public class ClothingRepositoryTest {
 
 	@Test
 	public void findByNameShouldReturnClothing() {
-		List<Clothing> clothings = repository.findByName("JoustavaMeno");
+		List<Clothing> clothings = repository.findByType("Haalari");
 
-		assertThat(clothings).hasSize(1);
+		assertThat(clothings).hasSize(2);
 		assertThat(clothings.get(0).getName()).isEqualTo("JoustavaMeno");
 	}
 
 	@Test
 	public void createNewClothing() {
-		Clothing clothing = new Clothing("70-luku", "Haalari", 32.00, null);
+		Clothing clothing = new Clothing("KivaVaate", "Haalari", 12.00, null);
 		repository.save(clothing);
 		assertThat(clothing.getId()).isNotNull();
 	}

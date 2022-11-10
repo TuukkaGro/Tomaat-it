@@ -1,7 +1,5 @@
 package com.tomaatit.DogClothing.web;
 
-import java.util.Optional;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,89 +20,88 @@ import com.tomaatit.DogClothing.domain.ProducerRepository;
 public class ClothingController {
 	@Autowired
 	private ClothingRepository repository;
-	
+
 	@Autowired
 	private ProducerRepository prepository;
-	
-	@RequestMapping(value= {"/", "/home"})
+
+	@RequestMapping(value = { "/", "/home" })
 	public String frontPage(Model model) {
 		return "index";
 	}
-	
-	@RequestMapping(value= {"/clothinglist"})
+
+	@RequestMapping(value = { "/clothinglist" })
 	public String clothingList(Model model) {
 		model.addAttribute("clothes", repository.findAll());
 		return "clothinglist";
 	}
-	
-	@RequestMapping(value= {"/producerlist"})
+
+	@RequestMapping(value = { "/producerlist" })
 	public String producerList(Model model) {
 		model.addAttribute("producer", prepository.findAll());
 		return "producerlist";
 	}
-	
+
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
-	public String addClothing(Model model){
+	public String addClothing(Model model) {
 		model.addAttribute("clothing", new Clothing());
 		model.addAttribute("producer", prepository.findAll());
 		return "addclothing";
 	}
-	
+
 	@RequestMapping(value = "/addproducer")
-	public String addProducer(Model model){
+	public String addProducer(Model model) {
 		model.addAttribute("producer", new Producer());
 		return "addproducer";
 	}
-	
+
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String saveClothing(@Valid Clothing clothing, BindingResult bindingResult, Model model){
+	public String saveClothing(@Valid Clothing clothing, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("producer", prepository.findAll());
-        	return "addclothing";
-        }
+			return "addclothing";
+		}
 		repository.save(clothing);
 		return "redirect:clothinglist";
 	}
-	
+
 	@RequestMapping(value = "/saveproducer", method = RequestMethod.POST)
-	public String saveProducer(Producer producer){
+	public String saveProducer(Producer producer) {
 		prepository.save(producer);
 		return "redirect:producerlist";
 	}
-	
+
 	@RequestMapping(value = "/showclothes/{id}", method = RequestMethod.GET)
-	public String showClothes(@PathVariable("id") Long id){
+	public String showClothes(@PathVariable("id") Long id) {
 		return "redirect:/rest/producers/" + id + "/clothings";
 	}
-	
+
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-	public String deleteClothing(@PathVariable("id") Long id, Model model){
+	public String deleteClothing(@PathVariable("id") Long id, Model model) {
 		repository.deleteById(id);
 		return "redirect:../clothinglist";
 	}
-	
+
 	@RequestMapping(value = "/deleteproducer/{id}", method = RequestMethod.GET)
-	public String deleteProducer(@PathVariable("id") Long id, Model model){
+	public String deleteProducer(@PathVariable("id") Long id, Model model) {
 		prepository.deleteById(id);
 		return "redirect:../producerlist";
 	}
+
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	public String editClothing(@PathVariable("id") Long clothingId, Model model) {
 		model.addAttribute("clothing", repository.findById(clothingId));
 		model.addAttribute("producer", prepository.findAll());
 		return "editclothing";
 	}
-	
+
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String save(@Valid Clothing clothing, BindingResult bindingResult, Model model){
+	public String save(@Valid Clothing clothing, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("producer", prepository.findAll());
-        	return "editclothing";
-        }
+			return "editclothing";
+		}
 		repository.save(clothing);
 		return "redirect:clothinglist";
 	}
-	
-	
 
 }

@@ -16,9 +16,9 @@ public class DogClothingApplicationTests {
 	@Autowired
 	private ClothingController controller;
 
+	// testing that ClothingController isn't empty
 	@Test
 	public void contextLoads() throws Exception {
 		assertThat(controller).isNotNull();
-
 	}
 }
