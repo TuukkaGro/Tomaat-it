@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+	<title>Dog Clothing Producer List</title>
+</head>
+<body>
+	<a href="/home"><h1>Dog clothing</h1></a>
+	
+		<table>
+
+	<tr>
+		<th>ID</th>
+		<th>Name</th>
+		
+	</tr>
+	
+	<tr th:each="producer : ${producer}">
+		<td th:text="${producer.producerid}"></td>
+		<td th:text="${producer.name}"></td>
+		<td><a th:href="@{/deleteproducer/{id}(id=${producer.producerid})}">Delete</a></td>
+		
+	</tr>
+	</table>
+	
+	<p><a href="/addproducer">Add</a></p>
+
+			
+	
+
+</body>
+</html>

@@ -59,13 +59,20 @@ public class ClothingController {
 		return "redirect:clothinglist";
 	}
 	
+	@RequestMapping(value = "/saveproducer", method = RequestMethod.POST)
+	public String saveProducer(Producer producer){
+		prepository.save(producer);
+		return "redirect:producerlist";
+		
+	}
+	
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String deleteClothing(@PathVariable("id") Long id, Model model){
 		repository.deleteById(id);
 		return "redirect:../clothinglist";
 	}
 	
-	@RequestMapping(value = "/delete/producer/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/deleteproducer/{id}", method = RequestMethod.GET)
 	public String deleteProducer(@PathVariable("id") Long id, Model model){
 		prepository.deleteById(id);
 		return "redirect:../producerlist";
