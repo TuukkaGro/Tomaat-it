@@ -43,7 +43,7 @@ public class ClothingController {
 		return "producerlist";
 	}
 	
-	@RequestMapping(value = "/add")
+	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String addClothing(Model model){
 		model.addAttribute("clothing", new Clothing());
 		model.addAttribute("producer", prepository.findAll());
@@ -56,8 +56,8 @@ public class ClothingController {
 		return "addproducer";
 	}
 	
-	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String save(@Valid Clothing clothing, BindingResult bindingResult, Model model){
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	public String saveClothing(@Valid Clothing clothing, BindingResult bindingResult, Model model){
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("producer", prepository.findAll());
         	return "addclothing";
@@ -93,6 +93,16 @@ public class ClothingController {
 		model.addAttribute("clothing", repository.findById(clothingId));
 		model.addAttribute("producer", prepository.findAll());
 		return "editclothing";
+	}
+	
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	public String save(@Valid Clothing clothing, BindingResult bindingResult, Model model){
+		if (bindingResult.hasErrors()) {
+			model.addAttribute("producer", prepository.findAll());
+        	return "editclothing";
+        }
+		repository.save(clothing);
+		return "redirect:clothinglist";
 	}
 	
 	
