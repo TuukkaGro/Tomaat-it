@@ -6,16 +6,21 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Clothing {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-
 	private Long id;
+	
+    @NotBlank(message = "Name is required.")
 	private String name;
+    
+    @NotBlank(message = "Type is required.")
 	private String type;
+    
 	private double price;
 	
 	
