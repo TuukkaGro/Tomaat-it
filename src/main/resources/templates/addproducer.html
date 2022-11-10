@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Dog Clothing</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Add Producer</h1>
+	<div>
+		<form th:object="${producer}" th:action="@{saveproducer}" action="#" method="post">
+			<label for="name">Name</label>
+			<input type="text" id="name" th:field="*{name}" /><br>
+			
+			
+			<input type="submit" value="Save"></input>
+		</form>
+	</div>
+</body>
+</html>

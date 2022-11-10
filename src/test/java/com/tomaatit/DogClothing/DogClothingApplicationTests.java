@@ -1,13 +1,24 @@
 package com.tomaatit.DogClothing;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import static org.assertj.core.api.Assertions.assertThat;
 
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import com.tomaatit.DogClothing.web.ClothingController;
+
+@ExtendWith(SpringExtension.class)
 @SpringBootTest
-class DogClothingApplicationTests {
+public class DogClothingApplicationTests {
+	@Autowired
+	private ClothingController controller;
 
 	@Test
-	void contextLoads() {
-	}
+	public void contextLoads() throws Exception {
+		assertThat(controller).isNotNull();
 
+	}
 }
