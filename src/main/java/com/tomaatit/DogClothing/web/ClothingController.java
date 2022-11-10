@@ -1,5 +1,7 @@
 package com.tomaatit.DogClothing.web;
 
+import java.util.Optional;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +24,7 @@ public class ClothingController {
 	private ClothingRepository repository;
 	
 	@Autowired
-	ProducerRepository prepository;
+	private ProducerRepository prepository;
 	
 	@RequestMapping(value= {"/", "/home"})
 	public String frontPage(Model model) {
@@ -68,7 +70,11 @@ public class ClothingController {
 	public String saveProducer(Producer producer){
 		prepository.save(producer);
 		return "redirect:producerlist";
-		
+	}
+	
+	@RequestMapping(value = "/showclothes/{id}", method = RequestMethod.GET)
+	public String showClothes(@PathVariable("id") Long id){
+		return "redirect:/rest/producers/" + id + "/clothings";
 	}
 	
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
