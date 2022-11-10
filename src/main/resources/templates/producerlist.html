@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 <head>
 	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
 	<title>Dog Clothing Producer List</title>
@@ -19,12 +21,12 @@
 		<td th:text="${producer.producerid}"></td>
 		<td th:text="${producer.name}"></td>
 		<td><a th:href="@{/showclothes/{id}(id=${producer.producerid})}">Show producer's clothes</a></td>
-		<td><a th:href="@{/deleteproducer/{id}(id=${producer.producerid})}">Delete</a></td>
+		<td><a class="btn btn-danger" th:href="@{/deleteproducer/{id}(id=${producer.producerid})}">Delete</a></td>
 		
 	</tr>
 	</table>
 	
-	<p><a href="/addproducer">Add</a></p>
+	<p><a class="btn btn-success" href="/addproducer">Add</a></p>
 
 			
 	
