@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 <head>
     <title>Dog Clothing</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -26,7 +27,7 @@
        			<option th:each="producer: ${producer}" th:value="${producer.producerid}" th:text="${producer.name}"></option>
     		</select><br>
 			
-			<input type="submit" value="Save"></input>
+			<input class="btn btn-success" type="submit" value="Save"></input>
 		</form>
 	</div>
 </body>

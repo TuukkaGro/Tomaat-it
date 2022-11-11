@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 <head>
 	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
 	<title>Dog Clothing List</title>
 </head>
 <body>
-	<a href="/home"><h1>Dog clothing</h1></a>
+	<i class="bi bi-back"><a href="/home"><h1>Dog clothing</h1></a></i>
 	
-		<table>
+		<table class="table-condensed">
 
 	<tr>
 		<th>ID</th>
@@ -17,19 +18,20 @@
 		<th>Producer</th>
 	</tr>
 	
+	
 	<tr th:each="clothing : ${clothes}">
 		<td th:text="${clothing.id}"></td>
 		<td th:text="${clothing.name}"></td>
 		<td th:text="${clothing.type}"></td>
 		<td th:text="${clothing.price}"></td>
 		<td th:text="${clothing.producer.name}"></td>
-		<td><a th:href="@{/delete/{id}(id=${clothing.id})}">Delete</a></td>
-		<td><a th:href="@{/edit/{id}(id=${clothing.id})}">Edit</a></td>
+		<td><a  class="btn btn-danger" th:href="@{/delete/{id}(id=${clothing.id})}">Delete</a></td>
+		<td><a class="btn btn-primary"  th:href="@{/edit/{id}(id=${clothing.id})}">Edit</a></td>
 	</tr>
 	</table>
 
 			
-	<p><a href="/add">Add</a></p>
+	<p><a class="btn btn-success" href="/add">Add</a></p>
 
 </body>
 </html>

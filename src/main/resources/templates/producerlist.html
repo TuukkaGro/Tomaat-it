@@ -20,7 +20,7 @@
 	<tr th:each="producer : ${producer}">
 		<td th:text="${producer.producerid}"></td>
 		<td th:text="${producer.name}"></td>
-		<td><a th:href="@{/showclothes/{id}(id=${producer.producerid})}">Show producer's clothes</a></td>
+		<td><a class="label label-info" th:href="@{/showclothes/{id}(id=${producer.producerid})}">Show producer's clothes</a></td>
 		<td><a class="btn btn-danger" th:href="@{/deleteproducer/{id}(id=${producer.producerid})}">Delete</a></td>
 		
 	</tr>
