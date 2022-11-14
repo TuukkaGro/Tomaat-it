@@ -1,5 +1,8 @@
 package com.tomaatit.DogClothing.web;
 
+import java.util.List;
+import java.util.Optional;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tomaatit.DogClothing.domain.Clothing;
 import com.tomaatit.DogClothing.domain.ClothingRepository;
@@ -39,6 +43,18 @@ public class ClothingController {
 	public String producerList(Model model) {
 		model.addAttribute("producer", prepository.findAll());
 		return "producerlist";
+	}
+
+	// RESTful service to get all clothing
+	@RequestMapping(value = "/clothes", method = RequestMethod.GET)
+	public @ResponseBody List<Clothing> booklistRest() {
+		return (List<Clothing>) repository.findAll();
+	}
+
+	// RESTful service to get clothing by id
+	@RequestMapping(value = "/clothing/{id}", method = RequestMethod.GET)
+	public @ResponseBody Optional<Clothing> findClothingRest(@PathVariable("id") Long clothingId) {
+		return repository.findById(clothingId);
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
