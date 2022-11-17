@@ -39,7 +39,7 @@ public class ClothingRepositoryTest {
 	@Test
 	public void createNewClothing() {
 		// create a new clothing entry into the database
-		Clothing clothing = new Clothing("KivaVaate", "Haalari", 12.00, null);
+		Clothing clothing = new Clothing("KivaVaate", "Haalari", 12.00, prepository.findByName("Leikki").get(0));
 		repository.save(clothing);
 		// check that the new entry id exists
 		assertThat(clothing.getId()).isNotNull();

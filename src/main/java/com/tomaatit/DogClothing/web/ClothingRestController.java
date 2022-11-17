@@ -45,7 +45,7 @@ public class ClothingRestController {
 
 	// editing an entry in clothing
 	@PutMapping("/api/clothes/{id}")
-	Clothing replaceEmployee(@RequestBody Clothing newClothing, @PathVariable Long id) {
+	Clothing replaceClothing(@RequestBody Clothing newClothing, @PathVariable Long id) {
 
 		return repository.findById(id).map(clothing -> {
 			clothing.setName(newClothing.getName());
