@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,7 @@ import com.tomaatit.DogClothing.domain.ClothingRepository;
 import com.tomaatit.DogClothing.domain.Producer;
 import com.tomaatit.DogClothing.domain.ProducerRepository;
 
+@CrossOrigin(origins= "http://localhost:3000/", maxAge = 3600)
 @RestController
 public class ClothingRestController {
 	@Autowired
