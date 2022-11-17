@@ -14,13 +14,13 @@ public class Clothing {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
-    @NotBlank(message = "Name is required.")
+
+	@NotBlank(message = "Name is required.")
 	private String name;
-    
-    @NotBlank(message = "Type is required.")
+
+	@NotBlank(message = "Type is required.")
 	private String type;
-    
+
 	private double price;
 
 	@ManyToOne
