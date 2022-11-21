@@ -1,4 +1,5 @@
-/* */
+/* foreign key checks
+ * drops earlier tables if any exist */
 SET FOREIGN_KEY_CHECKS=0; 
 DROP TABLE IF EXISTS Producer; 
 DROP TABLE IF EXISTS Clothing; 
