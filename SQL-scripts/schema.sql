@@ -1,3 +1,5 @@
+CREATE DATABASE MariaDBtomaatit;
+
 CREATE TABLE Producer (
     producerID int NOT NULL AUTO_INCREMENT,
     name varchar(50) NOT NULL,
