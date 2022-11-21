@@ -1,4 +1,4 @@
-CREATE DATABASE MariaDBtomaatit;
+CREATE DATABASE tomaatit;
 
 CREATE TABLE Producer (
     producerID int NOT NULL AUTO_INCREMENT,
