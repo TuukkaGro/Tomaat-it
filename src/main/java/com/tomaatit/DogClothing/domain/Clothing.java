@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -20,7 +21,8 @@ public class Clothing {
 
 	@NotBlank(message = "Type is required.")
 	private String type;
-
+	
+	@Min(value=1)
 	private double price;
 
 	@ManyToOne
