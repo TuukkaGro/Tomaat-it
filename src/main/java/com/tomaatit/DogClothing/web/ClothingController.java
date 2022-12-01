@@ -29,6 +29,11 @@ public class ClothingController {
 
 	@Autowired
 	private ProducerRepository prepository;
+	
+	@RequestMapping(value = "/login")
+	public String login() {
+		return "login";
+	}
 
 	@RequestMapping(value = { "/", "/home" })
 	public String frontPage(Model model) {

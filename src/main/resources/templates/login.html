@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Dog clothing</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Sign in</h1>
+	<div th:if="${param.error}">
+        Wrong username or password.
+    </div>
+    <div th:if="${param.logout}">
+        You have signed out.
+    </div>
+	<div>
+		<form th:action="@{/login}" method="post">
+			<label>Username: </label>
+			<input type="text" name="username" /><br>
+			
+			<label>Password: </label>
+			<input type="password" name="password" /><br>
+			
+			<input type="submit" value="Sign in"></input>
+		</form>
+	</div>
+</body>
+</html>

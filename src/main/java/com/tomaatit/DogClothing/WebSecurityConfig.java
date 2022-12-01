@@ -22,7 +22,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     	http
     		.authorizeRequests()
     			//allow access to these endpoints without authentication
-    		  .antMatchers("/", "/home", "/clothinglist").permitAll()
+    		  .antMatchers("/", "/home").permitAll()
 	    	  .anyRequest().authenticated()
 	    	  .and()
 	    	.formLogin()
