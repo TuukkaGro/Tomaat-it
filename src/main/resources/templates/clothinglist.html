@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 <head>
 	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
@@ -7,6 +7,7 @@
 </head>
 <body>
 	<i class="bi bi-back"><a href="/home"><h1>Dog clothing</h1></a></i>
+	<h2 th:inline="text">Welcome to Dog clothing store [[${#httpServletRequest.remoteUser}]]!</h2>
 	
 		<table class="table-condensed">
 
@@ -25,13 +26,13 @@
 		<td th:text="${clothing.type}"></td>
 		<td th:text="${clothing.price}"></td>
 		<td th:text="${clothing.producer.name}"></td>
-		<td><a  class="btn btn-danger" th:href="@{/delete/{id}(id=${clothing.id})}">Delete</a></td>
-		<td><a class="btn btn-primary"  th:href="@{/edit/{id}(id=${clothing.id})}">Edit</a></td>
+		<td sec:authorize="hasAuthority('ADMIN')"><a  class="btn btn-danger" th:href="@{/delete/{id}(id=${clothing.id})}">Delete</a></td>
+		<td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-primary"  th:href="@{/edit/{id}(id=${clothing.id})}">Edit</a></td>
 	</tr>
 	</table>
 
 			
-	<p><a class="btn btn-success" href="/add">Add</a></p>
+	<p sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-success" href="/add">Add</a></p>
 
 </body>
 </html>
