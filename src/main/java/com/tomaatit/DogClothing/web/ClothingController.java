@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,7 +23,6 @@ import com.tomaatit.DogClothing.domain.ProducerRepository;
 
 @CrossOrigin(origins= "http://localhost:3000/", maxAge = 3600)
 @Controller
-
 public class ClothingController {
 	@Autowired
 	private ClothingRepository repository;
@@ -60,6 +60,7 @@ public class ClothingController {
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public String addClothing(Model model) {
 		model.addAttribute("clothing", new Clothing());
 		model.addAttribute("producer", prepository.findAll());
@@ -67,12 +68,14 @@ public class ClothingController {
 	}
 
 	@RequestMapping(value = "/addproducer")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public String addProducer(Model model) {
 		model.addAttribute("producer", new Producer());
 		return "addproducer";
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public String saveClothing(@Valid Clothing clothing, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("producer", prepository.findAll());
@@ -83,6 +86,7 @@ public class ClothingController {
 	}
 
 	@RequestMapping(value = "/saveproducer", method = RequestMethod.POST)
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public String saveProducer(Producer producer) {
 		prepository.save(producer);
 		return "redirect:producerlist";
@@ -94,18 +98,21 @@ public class ClothingController {
 	}
 
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public String deleteClothing(@PathVariable("id") Long id, Model model) {
 		repository.deleteById(id);
 		return "redirect:../clothinglist";
 	}
 
 	@RequestMapping(value = "/deleteproducer/{id}", method = RequestMethod.GET)
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public String deleteProducer(@PathVariable("id") Long id, Model model) {
 		prepository.deleteById(id);
 		return "redirect:../producerlist";
 	}
 
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public String editClothing(@PathVariable("id") Long clothingId, Model model) {
 		model.addAttribute("clothing", repository.findById(clothingId));
 		model.addAttribute("producer", prepository.findAll());
@@ -113,6 +120,7 @@ public class ClothingController {
 	}
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public String save(@Valid Clothing clothing, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("producer", prepository.findAll());
