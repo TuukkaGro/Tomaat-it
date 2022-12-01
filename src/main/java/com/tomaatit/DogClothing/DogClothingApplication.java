@@ -1,51 +1,15 @@
 package com.tomaatit.DogClothing;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-
-import com.tomaatit.DogClothing.domain.Clothing;
-import com.tomaatit.DogClothing.domain.ClothingRepository;
-import com.tomaatit.DogClothing.domain.Producer;
-import com.tomaatit.DogClothing.domain.ProducerRepository;
-
-
 
 @SpringBootApplication
 public class DogClothingApplication {
-	/*private static final Logger log = LoggerFactory.getLogger(DogClothingApplication.class);*/
-
 
 	public static void main(String[] args) {
 		SpringApplication.run(DogClothingApplication.class, args);
 		
-		
 	}
-	
-	/*@Bean
-	public CommandLineRunner clothingDemo(ClothingRepository repository, ProducerRepository prepository) {
-		return (args) -> {
-			log.info("save some clothing");
-			
-			
-			prepository.save(new Producer("M&M"));
-			prepository.save(new Producer("Leikki"));
-			
-			//mock up clothes
-			repository.save(new Clothing("JoustavaMeno", "Haalari", 59.00, prepository.findByName("M&M").get(0)));
-			repository.save(new Clothing("70-luku", "Haalari", 32.00, prepository.findByName("Leikki").get(0)));
-			
-			log.info("fetch all clothing");
-			for (Clothing clothing : repository.findAll()) {
-				log.info(clothing.toString());
-				
-		}
-			
-		};
-	}*/
 	
 }
 
