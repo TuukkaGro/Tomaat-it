@@ -16,7 +16,7 @@ import com.tomaatit.DogClothing.domain.ProducerRepository;
 
 @SpringBootApplication
 public class DogClothingApplication {
-	private static final Logger log = LoggerFactory.getLogger(DogClothingApplication.class);
+	/*private static final Logger log = LoggerFactory.getLogger(DogClothingApplication.class);*/
 
 
 	public static void main(String[] args) {
@@ -25,7 +25,7 @@ public class DogClothingApplication {
 		
 	}
 	
-	@Bean
+	/*@Bean
 	public CommandLineRunner clothingDemo(ClothingRepository repository, ProducerRepository prepository) {
 		return (args) -> {
 			log.info("save some clothing");
@@ -45,7 +45,7 @@ public class DogClothingApplication {
 		}
 			
 		};
-	}
+	}*/
 	
 }
 

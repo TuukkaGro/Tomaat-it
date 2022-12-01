@@ -1,5 +1,6 @@
 package com.tomaatit.DogClothing.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,6 +15,7 @@ public class Clothing {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "clothingid")
 	private Long id;
 
 	@NotBlank(message = "Name is required.")
