@@ -64,6 +64,7 @@ public class ClothingController {
 		return repository.findById(clothingId);
 	}
 
+	// add clothing. ADMIN only.
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	@PreAuthorize("hasAuthority('ADMIN')")
 	public String addClothing(Model model) {
@@ -72,6 +73,7 @@ public class ClothingController {
 		return "addclothing";
 	}
 
+	// add a producer. ADMIN only.
 	@RequestMapping(value = "/addproducer")
 	@PreAuthorize("hasAuthority('ADMIN')")
 	public String addProducer(Model model) {
@@ -90,6 +92,7 @@ public class ClothingController {
 		return "redirect:clothinglist";
 	}
 
+	// save a new producer to the list. ADMIN only.
 	@RequestMapping(value = "/saveproducer", method = RequestMethod.POST)
 	@PreAuthorize("hasAuthority('ADMIN')")
 	public String saveProducer(Producer producer) {
@@ -97,11 +100,13 @@ public class ClothingController {
 		return "redirect:producerlist";
 	}
 
+	// show all clothing of a producer
 	@RequestMapping(value = "/showclothes/{id}", method = RequestMethod.GET)
 	public String showClothes(@PathVariable("id") Long id) {
 		return "redirect:/rest/producers/" + id + "/clothings";
 	}
 
+	// delete clothing. ADMIN only.
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	@PreAuthorize("hasAuthority('ADMIN')")
 	public String deleteClothing(@PathVariable("id") Long id, Model model) {
@@ -109,7 +114,7 @@ public class ClothingController {
 		return "redirect:../clothinglist";
 	}
 
-	// delete producer
+	// delete producer. ADMIN only.
 	@RequestMapping(value = "/deleteproducer/{id}", method = RequestMethod.GET)
 	@PreAuthorize("hasAuthority('ADMIN')")
 	public String deleteProducer(@PathVariable("id") Long id, Model model) {
@@ -117,7 +122,7 @@ public class ClothingController {
 		return "redirect:../producerlist";
 	}
 
-	// edit producer
+	// edit producer. ADMIN only.
 	@RequestMapping(value = "/editproducer/{id}", method = RequestMethod.GET)
 	@PreAuthorize("hasAuthority('ADMIN')")
 	public String editProducer(@PathVariable("producerid") Long producerId, Model model) {
@@ -125,6 +130,7 @@ public class ClothingController {
 		return "editproducer";
 	}
 
+	// edit clothing. ADMIN only.
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	@PreAuthorize("hasAuthority('ADMIN')")
 	public String editClothing(@PathVariable("id") Long clothingId, Model model) {
@@ -133,6 +139,7 @@ public class ClothingController {
 		return "editclothing";
 	}
 
+	// save new clothing item. ADMIN only.
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	@PreAuthorize("hasAuthority('ADMIN')")
 	public String save(@Valid Clothing clothing, BindingResult bindingResult, Model model) {
