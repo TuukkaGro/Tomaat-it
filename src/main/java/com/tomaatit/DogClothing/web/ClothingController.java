@@ -21,7 +21,7 @@ import com.tomaatit.DogClothing.domain.ClothingRepository;
 import com.tomaatit.DogClothing.domain.Producer;
 import com.tomaatit.DogClothing.domain.ProducerRepository;
 
-@CrossOrigin(origins= "http://localhost:3000/", maxAge = 3600)
+@CrossOrigin(origins = "http://localhost:3000/", maxAge = 3600)
 @Controller
 public class ClothingController {
 	@Autowired
@@ -29,7 +29,7 @@ public class ClothingController {
 
 	@Autowired
 	private ProducerRepository prepository;
-	
+
 	@RequestMapping(value = "/login")
 	public String login() {
 		return "login";
@@ -109,11 +109,20 @@ public class ClothingController {
 		return "redirect:../clothinglist";
 	}
 
+	// delete producer
 	@RequestMapping(value = "/deleteproducer/{id}", method = RequestMethod.GET)
 	@PreAuthorize("hasAuthority('ADMIN')")
 	public String deleteProducer(@PathVariable("id") Long id, Model model) {
 		prepository.deleteById(id);
 		return "redirect:../producerlist";
+	}
+
+	// edit producer
+	@RequestMapping(value = "/editproducer/{id}", method = RequestMethod.GET)
+	@PreAuthorize("hasAuthority('ADMIN')")
+	public String editProducer(@PathVariable("producerid") Long producerId, Model model) {
+		model.addAttribute("producer", prepository.findById(producerId));
+		return "editproducer";
 	}
 
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)

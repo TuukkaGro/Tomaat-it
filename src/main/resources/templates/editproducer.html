@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+<head>
+    <title>Dog Clothing</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Edit producer</h1>
+	<div>
+		<form th:object="${producer}" th:action="@{../save}" action="#" method="post">
+			<input type="hidden" th:field="*{producerId}" class="form-control"/>
+		
+			<label for="name">Name</label>
+			<input type="text" id="name" th:field="*{name}" /><br>
+			<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name is required.</p>
+						
+			<input class="btn btn-success" type="submit" value="Save"></input>
+		</form>
+	</div>
+</body>
+</html>

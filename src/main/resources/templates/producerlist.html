@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+
 <head>
 	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
 	<title>Dog Clothing Producer List</title>
@@ -21,12 +21,13 @@
 		<td th:text="${producer.producerid}"></td>
 		<td th:text="${producer.name}"></td>
 		<td><a class="label label-info" th:href="@{/showclothes/{id}(id=${producer.producerid})}">Show producer's clothes</a></td>
-		<td><a class="btn btn-danger" th:href="@{/deleteproducer/{id}(id=${producer.producerid})}">Delete</a></td>
+		<td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-primary"  th:href="@{/editproducer/{id}(id=${producer.producerid})}">Edit</a></td>
+		<td sec:authorize="hasAuthority('ADMIN')"><a  class="btn btn-danger" th:href="@{/deleteproducer/{id}(id=${producer.producerid})}">Delete</a></td>
 		
 	</tr>
 	</table>
 	
-	<p><a class="btn btn-success" href="/addproducer">Add</a></p>
+	<p><a sec:authorize="hasAuthority('ADMIN')" class="btn btn-success" href="/addproducer">Add</a></p>
 
 			
 	
