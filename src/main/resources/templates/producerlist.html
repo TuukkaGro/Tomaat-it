@@ -21,12 +21,15 @@
 		<td th:text="${producer.producerid}"></td>
 		<td th:text="${producer.name}"></td>
 		<td><a class="label label-info" th:href="@{/showclothes/{id}(id=${producer.producerid})}">Show producer's clothes</a></td>
+		
+		<!--authorized for ADMIN only -->
 		<td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-primary"  th:href="@{/editproducer/{id}(id=${producer.producerid})}">Edit</a></td>
 		<td sec:authorize="hasAuthority('ADMIN')"><a  class="btn btn-danger" th:href="@{/deleteproducer/{id}(id=${producer.producerid})}">Delete</a></td>
 		
 	</tr>
 	</table>
 	
+	<!--authorized for ADMIN only -->
 	<p><a sec:authorize="hasAuthority('ADMIN')" class="btn btn-success" href="/addproducer">Add</a></p>
 
 			

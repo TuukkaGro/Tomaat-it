@@ -26,12 +26,14 @@
 		<td th:text="${clothing.type}"></td>
 		<td th:text="${clothing.price}"></td>
 		<td th:text="${clothing.producer.name}"></td>
+
+		<!--authorized for ADMIN only -->
 		<td sec:authorize="hasAuthority('ADMIN')"><a  class="btn btn-danger" th:href="@{/delete/{id}(id=${clothing.id})}">Delete</a></td>
 		<td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-primary"  th:href="@{/edit/{id}(id=${clothing.id})}">Edit</a></td>
 	</tr>
 	</table>
 
-			
+	<!--authorized for ADMIN only -->
 	<p sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-success" href="/add">Add</a></p>
 
 </body>
