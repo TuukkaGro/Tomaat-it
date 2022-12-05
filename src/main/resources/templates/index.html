@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 <head>
     <title>Dog Clothing Home</title>
@@ -9,6 +9,11 @@
 	<h1>Dog clothing</h1>
     <h5>By TomaatIT</h5>
 	<a class="label label-primary" href="/clothinglist">Dog clothes</a>   
-	<br><a class="label label-primary" href="/producerlist">Producers</a>    	 	
+	<br><a class="label label-primary" href="/producerlist">Producers</a>
+	<div sec:authorize="hasAuthority('USER') or hasAuthority('ADMIN')">
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Kirjaudu ulos"/>
+		</form>
+	</div>    	 	
 </body>
 </html>
