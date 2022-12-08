@@ -39,12 +39,20 @@ public class ClothingRepositoryTest {
 	@Test
 	public void createNewClothing() {
 		// create a new clothing entry into the database
-		Clothing clothing = new Clothing("KivaVaate", "Haalari", 12.00, prepository.findByName("Leikki").get(0));
+		Clothing clothing = new Clothing("KivaVaate", "Haalari", 12, prepository.findByName("Leikki").get(0));
 		repository.save(clothing);
 		// check that the new entry id exists
 		assertThat(clothing.getId()).isNotNull();
 	}
 
+	// delete clothing
+	@Test
+	public void deleteClothing() {
+		repository.deleteAll();
+		assertThat(repository.count()).isEqualTo(0);
+	}
+
+	// create a new producer
 	@Test
 	public void createNewProducer() {
 		// create a new producer entry into the database
@@ -52,6 +60,14 @@ public class ClothingRepositoryTest {
 		prepository.save(producer);
 		// check that the new entry id exists
 		assertThat(producer.getProducerid()).isNotNull();
+	}
+
+	// delete producers
+	@Test
+	public void deleteProducers() {
+		prepository.save(new Producer("Hilleri"));
+		prepository.deleteAll();
+		assertThat(prepository.count()).isEqualTo(0);
 	}
 
 }
